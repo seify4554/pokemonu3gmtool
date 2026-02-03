@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Insert Pokémon{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Insert New Pokémon</h2>
+    
+    <form method="POST">
+        <div class="row g-3">
+            <div class="col-12">
+                <label class="form-label">Pokémon Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            
+            <div class="col-md-4">
+                <label class="form-label">HP</label>
+                <input type="number" name="hp" class="form-control" value="0" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Attack</label>
+                <input type="number" name="atk" class="form-control" value="0" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Defense</label>
+                <input type="number" name="defense" class="form-control" value="0" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Sp. Attack</label>
+                <input type="number" name="spa" class="form-control" value="0" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Sp. Defense</label>
+                <input type="number" name="spd" class="form-control" value="0" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Speed</label>
+                <input type="number" name="spe" class="form-control" value="0" min="0" max="255">
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">Capabilities</label>
+                <textarea name="capabilities" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Skills</label>
+                <textarea name="skills" class="form-control" rows="3"></textarea>
+            </div>
+            
+            <div class="col-12">
+                <label class="form-label">Abilities (comma-separated)</label>
+                <input type="text" name="abilities" class="form-control" 
+                       placeholder="Overgrow, Chlorophyll">
+            </div>
+            
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-success">Insert Pokémon</button>
+                <a href="{{ url_for('pokemon') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </form>
+    
+    <hr class="my-4">
+    
+    <h4>Bulk Import from CSV</h4>
+    <p>CSV format: name,HP,Atk,Def,SpA,SpD,Spe</p>
+    <form method="POST" action="{{ url_for('import_pokemon_csv') }}" enctype="multipart/form-data">
+        <div class="mb-3">
+            <input type="file" name="csv_file" class="form-control" accept=".csv" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Import CSV</button>
+    </form>
+</div>
+{% endblock %}

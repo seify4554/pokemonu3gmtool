@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Severity Roll{% endblock %}
+
+{% block content %}
+<h2>Severity Roll (1d10)</h2>
+
+<p>Click the button to roll encounter severity.</p>
+
+<form method="POST">
+    <button type="submit" class="btn btn-lg btn-danger">Roll Severity</button>
+</form>
+
+{% if result %}
+<div class="alert alert-warning mt-4">
+    {{ result | safe }}
+</div>
+{% endif %}
+{% endblock %}

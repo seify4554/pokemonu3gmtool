@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Move: {{ move['name'] }}{% endblock %}
+
+{% block content %}
+<h2>Edit Move: {{ move['name'] }}</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">AC</label>
+        <input type="number" name="ac" class="form-control" value="{{ move['ac'] or '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Damage (DB)</label>
+        <input type="text" name="damage" class="form-control" value="{{ move['damage'] or '' }}">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Effect</label>
+        <textarea name="effect" class="form-control" rows="5">{{ move['effect'] or '' }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Move</button>
+</form>
+{% endblock %}

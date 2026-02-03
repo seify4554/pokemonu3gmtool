@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Pokémon Database{% endblock %}
+
+{% block content %}
+<h2>Pokémon Database</h2>
+
+<div class="d-flex justify-content-between mb-4">
+    <form method="POST" class="d-flex flex-grow-1 me-3">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search Pokémon name..." value="{{ search }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+    
+    <div>
+        <a href="{{ url_for('insert_pokemon') }}" class="btn btn-success">+ Insert New</a>
+    </div>
+</div>
+
+{% if results %}
+<div class="table-responsive">
+    <table class="table table-hover table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>HP</th>
+                <th>Atk</th>
+                <th>Def</th>
+                <th>SpA</th>
+                <th>SpD</th>
+                <th>Spe</th>
+                <th>Capabilities</th>
+                <th>Skills</th>
+                <th>Abilities</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for r in results %}
+            <tr>
+                <td>
+                    <strong>{{ r['name'] }}</strong>
+                    <br>
+                    <a href="{{ url_for('edit_pokemon', name=r['name']) }}" class="btn btn-sm btn-outline-warning mt-1">Edit</a>
+                </td>
+                <td>{{ r['HP'] if r['HP'] is not none else '—' }}</td>
+                <td>{{ r['Attack'] if r['Attack'] is not none else '—' }}</td>
+                <td>{{ r['Defense'] if r['Defense'] is not none else '—' }}</td>
+                <td>{{ r['SpAtk'] if r['SpAtk'] is not none else '—' }}</td>
+                <td>{{ r['SpDef'] if r['SpDef'] is not none else '—' }}</td>
+                <td>{{ r['Speed'] if r['Speed'] is not none else '—' }}</td>
+                <td>{{ r['capabilities'] or '—' }}</td>
+                <td>{{ r['skills'] or '—' }}</td>
+                <td>
+                    {% if r['abilities'] and r['abilities'] != '[]' %}
+                        {{ r['abilities'].replace('"', '').replace('[', '').replace(']', '') }}
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No results found. Try a different search.</p>
+{% endif %}
+
+{% if search %}
+<p class="mt-3">
+    <a href="{{ url_for('pokemon') }}" class="btn btn-secondary">Clear Search</a>
+</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Level-Up Stat Rolls{% endblock %}
+
+{% block content %}
+<h2>Level-Up Stat Rolls</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Number of Rolls</label>
+        <input type="number" name="rolls_count" class="form-control" min="1" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Neutral Nature?</label>
+        <select name="is_neutral" class="form-select">
+            <option value="yes">Yes (Neutral)</option>
+            <option value="no">No</option>
+        </select>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Boosted Stat (if not neutral)</label>
+            <select name="boosted_stat" class="form-select">
+                <option>HP</option><option>Attack</option><option>Defense</option>
+                <option>Special Attack</option><option>Special Defense</option><option>Speed</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Hindered Stat (if not neutral)</label>
+            <select name="hindered_stat" class="form-select">
+                <option>HP</option><option>Attack</option><option>Defense</option>
+                <option>Special Attack</option><option>Special Defense</option><option>Speed</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Roll Stats</button>
+</form>
+
+{% if result %}
+<div class="mt-4">
+    <h5>Total Stat Gains:</h5>
+    <ul class="list-group">
+        {% for stat, value in result.items() %}
+            <li class="list-group-item"><strong>{{ stat }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}

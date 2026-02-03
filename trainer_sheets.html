@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+
+{% block title %}Trainer Sheets{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Trainer Sheets</h2>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else 'success' }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <div class="row">
+        <!-- Left Column: Trainer Management -->
+        <div class="col-md-4">
+            <!-- Create New Trainer -->
+            <div class="card bg-dark mb-4">
+                <div class="card-header">
+                    <h5>Create New Trainer</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('trainer_sheets') }}">
+                        <input type="hidden" name="action" value="create_trainer">
+                        <div class="input-group">
+                            <input type="text" name="trainer_name" class="form-control" placeholder="Trainer Name" required>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Select Trainer -->
+            <div class="card bg-dark">
+                <div class="card-header">
+                    <h5>Select Trainer</h5>
+                </div>
+                <div class="card-body">
+                    <form method="GET" id="selectTrainerForm">
+                        <select name="trainer_id" class="form-select mb-3" onchange="this.form.submit()">
+                            <option value="">Choose a trainer...</option>
+                            {% for trainer in trainers %}
+                            <option value="{{ trainer['id'] }}" 
+                                    {% if selected_trainer and selected_trainer['id'] == trainer['id'] %}selected{% endif %}>
+                                {{ trainer['name'] }} 
+                                {% if trainer['created_at'] %}
+                                    ({{ trainer['created_at'][:10] }})
+                                {% endif %}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                    
+                    {% if selected_trainer %}
+                    <div class="mt-3">
+                        <h6>Selected: {{ selected_trainer['name'] }}</h6>
+                        <a href="{{ url_for('delete_trainer', trainer_id=selected_trainer['id']) }}" 
+                           class="btn btn-sm btn-danger" 
+                           onclick="return confirm('Delete this trainer and all their data?')">
+                            Delete Trainer
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Trainer Details -->
+        <div class="col-md-8">
+            {% if selected_trainer %}
+            <!-- Inventory Management -->
+            <div class="card bg-dark mb-4">
+                <div class="card-header">
+                    <h5>Inventory</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('trainer_sheets', trainer_id=selected_trainer['id']) }}" class="mb-3">
+                        <input type="hidden" name="action" value="add_item">
+                        <div class="row g-2">
+                            <div class="col-md-7">
+                                <input type="text" name="item_name" class="form-control" placeholder="Item Name" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="number" name="quantity" class="form-control" value="1" min="1">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary w-100">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    {% if inventory %}
+                    <div class="table-responsive">
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in inventory %}
+                                <tr>
+                                    <td>{{ item['item_name'] }}</td>
+                                    <td>{{ item['quantity'] }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <form method="POST" action="{{ url_for('update_inventory', item_id=item['id']) }}" class="d-inline">
+                                                <input type="hidden" name="trainer_id" value="{{ selected_trainer['id'] }}">
+                                                <div class="input-group input-group-sm">
+                                                    <input type="number" name="quantity" class="form-control form-control-sm" 
+                                                           value="{{ item['quantity'] }}" min="0" style="width: 80px;">
+                                                    <button type="submit" class="btn btn-sm btn-outline-warning">Update</button>
+                                                </div>
+                                            </form>
+                                            <form method="POST" action="{{ url_for('update_inventory', item_id=item['id']) }}" class="d-inline ms-1">
+                                                <input type="hidden" name="trainer_id" value="{{ selected_trainer['id'] }}">
+                                                <input type="hidden" name="quantity" value="0">
+                                                <button type="submit" class="btn btn-sm btn-danger" 
+                                                        onclick="return confirm('Remove this item?')">Remove</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-muted">No items in inventory.</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Add Pokémon -->
+            <div class="card bg-dark mb-4">
+                <div class="card-header">
+                    <h5>Add Pokémon</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('trainer_sheets', trainer_id=selected_trainer['id']) }}">
+                        <input type="hidden" name="action" value="add_pokemon">
+                        <div class="row g-2 mb-3">
+                            <div class="col-md-5">
+                                <select name="pokemon_name" class="form-select" required>
+                                    <option value="">Select Pokémon</option>
+                                    {% for name in pokemon_names %}
+                                    <option value="{{ name }}">{{ name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" name="nickname" class="form-control" placeholder="Nickname (optional)">
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" name="level" class="form-control" value="5" min="1" max="100">
+                            </div>
+                            <div class="col-md-2">
+                                <select name="nature" class="form-select">
+                                    {% for nature in natures %}
+                                    <option value="{{ nature }}">{{ nature }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-md-3">
+                                <select name="gender" class="form-select">
+                                    <option value="♂">Male (♂)</option>
+                                    <option value="♀">Female (♀)</option>
+                                    <option value="genderless">Genderless</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="is_shiny" class="form-select">
+                                    <option value="no">Normal</option>
+                                    <option value="yes">Shiny ✨</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select name="is_active" class="form-select">
+                                    <option value="active">Add to Party</option>
+                                    <option value="pc">Add to PC</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-success w-100">Add Pokémon</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Active Pokémon (Party) -->
+            <div class="card bg-dark mb-4">
+                <div class="card-header bg-success">
+                    <h5>Active Party ({{ active_pokemon|length }}/6)</h5>
+                </div>
+                <div class="card-body">
+                    {% if active_pokemon %}
+                    <div class="table-responsive">
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th>Pokémon</th>
+                                    <th>Nickname</th>
+                                    <th>Level</th>
+                                    <th>Nature</th>
+                                    <th>Gender</th>
+                                    <th>Shiny</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pkmn in active_pokemon %}
+                                <tr>
+                                    <td>{{ pkmn['pokemon_name'] }}</td>
+                                    <td>{{ pkmn['nickname'] or '—' }}</td>
+                                    <td>{{ pkmn['level'] }}</td>
+                                    <td>{{ pkmn['nature'] }}</td>
+                                    <td>{{ pkmn['gender'] }}</td>
+                                    <td>{{ '✨' if pkmn['is_shiny'] else '—' }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <form method="POST" action="{{ url_for('trainer_sheets', trainer_id=selected_trainer['id']) }}" class="d-inline">
+                                                <input type="hidden" name="action" value="move_to_pc">
+                                                <input type="hidden" name="pokemon_id" value="{{ pkmn['id'] }}">
+                                                <button type="submit" class="btn btn-warning">To PC</button>
+                                            </form>
+                                            <a href="{{ url_for('delete_pokemon', pokemon_id=pkmn['id']) }}?trainer_id={{ selected_trainer['id'] }}" 
+                                               class="btn btn-danger"
+                                               onclick="return confirm('Release this Pokémon?')">Release</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-muted">No Pokémon in party. Add some above!</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- PC Pokémon -->
+            <div class="card bg-dark">
+                <div class="card-header bg-secondary">
+                    <h5>PC Storage ({{ pc_pokemon|length }})</h5>
+                </div>
+                <div class="card-body">
+                    {% if pc_pokemon %}
+                    <div class="table-responsive">
+                        <table class="table table-sm table-dark">
+                            <thead>
+                                <tr>
+                                    <th>Pokémon</th>
+                                    <th>Nickname</th>
+                                    <th>Level</th>
+                                    <th>Nature</th>
+                                    <th>Gender</th>
+                                    <th>Shiny</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pkmn in pc_pokemon %}
+                                <tr>
+                                    <td>{{ pkmn['pokemon_name'] }}</td>
+                                    <td>{{ pkmn['nickname'] or '—' }}</td>
+                                    <td>{{ pkmn['level'] }}</td>
+                                    <td>{{ pkmn['nature'] }}</td>
+                                    <td>{{ pkmn['gender'] }}</td>
+                                    <td>{{ '✨' if pkmn['is_shiny'] else '—' }}</td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <form method="POST" action="{{ url_for('trainer_sheets', trainer_id=selected_trainer['id']) }}" class="d-inline">
+                                                <input type="hidden" name="action" value="move_to_party">
+                                                <input type="hidden" name="pokemon_id" value="{{ pkmn['id'] }}">
+                                                <button type="submit" class="btn btn-success">To Party</button>
+                                            </form>
+                                            <a href="{{ url_for('delete_pokemon', pokemon_id=pkmn['id']) }}?trainer_id={{ selected_trainer['id'] }}" 
+                                               class="btn btn-danger"
+                                               onclick="return confirm('Release this Pokémon?')">Release</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <p class="text-muted">No Pokémon in PC storage.</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% else %}
+            <div class="alert alert-info">
+                <h5>No Trainer Selected</h5>
+                <p>Select a trainer from the left panel or create a new one to manage their inventory and Pokémon.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+// Add JavaScript to prevent form resubmission on page refresh
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
+{% endblock %}

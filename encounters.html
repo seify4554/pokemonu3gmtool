@@ -1,0 +1,286 @@
+{% extends "base.html" %}
+{% block title %}Encounter Tables{% endblock %}
+{% block content %}
+<h2>Encounter Tables</h2>
+
+{% if message %}
+<div class="alert alert-success">{{ message }}</div>
+{% endif %}
+
+<!-- Mode Selection -->
+<div class="mb-4">
+    <div class="btn-group" role="group">
+        <a href="{{ url_for('encounters') }}?mode=manual" 
+           class="btn btn-outline-primary {% if mode == 'manual' %}active{% endif %}">
+            Manual Mode
+        </a>
+        <a href="{{ url_for('encounters') }}?mode=auto" 
+           class="btn btn-outline-primary {% if mode == 'auto' %}active{% endif %}">
+            Auto Mode (Severity)
+        </a>
+    </div>
+</div>
+
+<!-- Create/Edit Table Form -->
+<form method="POST" id="encounterForm">
+    <input type="hidden" name="action" value="create">
+    <input type="hidden" name="mode" value="{{ mode }}">
+    
+    <div class="mb-3">
+        <label class="form-label">Table Name</label>
+        <input type="text" name="table_name" class="form-control" required placeholder="e.g. Route 1 Grass">
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <label class="form-label">Min Level</label>
+            <input type="number" name="min_lv" class="form-control" value="5">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Max Level</label>
+            <input type="number" name="max_lv" class="form-control" value="15">
+        </div>
+    </div>
+
+    <!-- Add Pokémon lists -->
+    {% for rarity in ['common','uncommon','rare','vrare'] %}
+    <h5>{{ rarity|capitalize }}</h5>
+    <div class="input-group mb-2">
+        <select id="{{rarity}}Select" class="form-select">
+            {% for p in pokemons %}
+                <option>{{ p }}</option>
+            {% endfor %}
+        </select>
+        <button type="button" onclick="addToList('{{rarity}}')" class="btn btn-outline-light">Add</button>
+    </div>
+    <table id="{{rarity}}List" class="table table-dark table-sm mb-4">
+        <thead><tr><th>Pokémon</th><th></th></tr></thead>
+        <tbody></tbody>
+    </table>
+    <input type="hidden" name="{{rarity}}" id="{{rarity}}Hidden">
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success">Save Table</button>
+</form>
+
+<hr>
+<h4>Roll Encounters</h4>
+
+<!-- Separate form for rolling encounters -->
+<form method="POST" id="rollForm">
+    <input type="hidden" name="action" value="roll">
+    <input type="hidden" name="mode" value="{{ mode }}">
+    
+    <!-- Team Levels Inputs (Auto Mode Only) -->
+    {% if mode == 'auto' %}
+    <div class="card mb-4 bg-dark">
+        <div class="card-header">
+            <h5>Enter Team Levels</h5>
+        </div>
+        <div class="card-body">
+            <div class="row g-3 mb-3">
+                {% for i in range(1, 7) %}
+                <div class="col-md-4">
+                    <label class="form-label">Team Member {{ i }} Level</label>
+                    <input type="number" name="team_level_{{ i }}" class="form-control" 
+                           value="{{ request.form.get('team_level_' ~ i, '') }}"
+                           placeholder="Level" min="1" max="100">
+                </div>
+                {% endfor %}
+            </div>
+            <p class="text-muted">
+                <strong>Severity Weight System:</strong><br>
+                1 (30%) • 2 (20%) • 3 (15%) • 4 (10%) • 5 (7%)<br>
+                6 (6%) • 7 (5%) • 8 (3%) • 9 (2%) • 10 (2%)
+            </p>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="input-group mb-3">
+        <select name="table_name" id="selectTable" class="form-select">
+            <option value="">Select a table...</option>
+            {% for t in tables %}
+                <option value="{{t}}" {% if request.form.get('table_name') == t %}selected{% endif %}>{{t}}</option>
+            {% endfor %}
+        </select>
+        <input type="number" name="num_rolls" class="form-control" placeholder="Rolls" value="{{ request.form.get('num_rolls', '1') }}">
+        <button type="submit" class="btn btn-primary">Roll Encounter</button>
+        <button type="button" class="btn btn-danger" onclick="deleteTable()">Delete Table</button>
+    </div>
+    <p class="text-muted">✨ Shiny chance: 1/500 | ⚡ Evolved Pokémon for high severity encounters</p>
+</form>
+
+<!-- Delete form (separate) -->
+<form method="POST" id="deleteForm" style="display: none;">
+    <input type="hidden" name="action" value="delete">
+    <input type="hidden" name="mode" value="{{ mode }}">
+    <input type="hidden" name="table_name" id="deleteTableName">
+</form>
+
+<!-- Roll results section -->
+<div id="rollResults">
+    {% for r in results %}
+    {% if 'alert alert-info' in r %}
+    {{ r|safe }}
+    {% else %}
+    <div class="mb-3 border p-2 bg-dark position-relative encounter-result" data-encounter="{{ r|e }}">
+        {{ r|safe }}
+        <button type="button" class="btn btn-sm btn-success position-absolute top-0 end-0 mt-2 me-2 save-encounter-btn" onclick="saveEncounter(this)">Save</button>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<!-- Add link to view saved encounters -->
+<div class="mt-3">
+    <a href="{{ url_for('view_saved_encounters') }}" class="btn btn-outline-info">View Saved Encounters</a>
+</div>
+
+<script>
+function addToList(rarity) {
+    const select = document.getElementById(rarity + 'Select');
+    const tableBody = document.querySelector('#' + rarity + 'List tbody');
+    const hiddenInput = document.getElementById(rarity + 'Hidden');
+    const pokemon = select.value;
+    if (!pokemon) return;
+    const existing = Array.from(tableBody.querySelectorAll('tr td:first-child')).map(td => td.innerText);
+    if (existing.includes(pokemon)) return;
+
+    const row = tableBody.insertRow();
+    row.insertCell(0).innerText = pokemon;
+
+    const removeCell = row.insertCell(1);
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'btn btn-sm btn-danger';
+    removeBtn.innerText = 'X';
+    removeBtn.onclick = () => {
+        row.remove();
+        updateHidden(rarity);
+    };
+    removeCell.appendChild(removeBtn);
+    updateHidden(rarity);
+}
+
+function updateHidden(rarity) {
+    const tableBody = document.querySelector('#' + rarity + 'List tbody');
+    const hiddenInput = document.getElementById(rarity + 'Hidden');
+    const list = [];
+    for (let row of tableBody.rows) list.push(row.cells[0].innerText);
+    hiddenInput.value = JSON.stringify(list);
+}
+
+function deleteTable() {
+    const tableSelect = document.getElementById('selectTable');
+    const tableName = tableSelect.value;
+    
+    if (!tableName) {
+        alert('Please select a table to delete');
+        return;
+    }
+    
+    if (confirm(`Are you sure you want to delete the table "${tableName}"?`)) {
+        document.getElementById('deleteTableName').value = tableName;
+        document.getElementById('deleteForm').submit();
+    }
+}
+
+// AJAX function to save individual encounter without refreshing page
+function saveEncounter(button) {
+    const encounterDiv = button.closest('.encounter-result');
+    const encounterText = encounterDiv.getAttribute('data-encounter');
+    
+    // Create a form data object
+    const formData = new FormData();
+    formData.append('encounter_text', encounterText);
+    
+    // Show loading state
+    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
+    button.disabled = true;
+    
+    // Send AJAX request
+    fetch('{{ url_for("save_encounter") }}', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Success - change button to saved state
+            button.innerHTML = 'Saved!';
+            button.classList.remove('btn-success');
+            button.classList.add('btn-secondary');
+            
+            // Show success message
+            showToast('Encounter saved successfully!', 'success');
+        } else {
+            throw new Error('Failed to save encounter');
+        }
+    })
+    .catch(error => {
+        // Error - reset button
+        button.innerHTML = 'Save';
+        button.disabled = false;
+        
+        // Show error message
+        showToast('Error saving encounter. Please try again.', 'danger');
+        console.error('Error:', error);
+    });
+}
+
+// Toast notification function
+function showToast(message, type = 'info') {
+    // Remove any existing toasts
+    const existingToasts = document.querySelectorAll('.custom-toast');
+    existingToasts.forEach(toast => toast.remove());
+    
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = `custom-toast alert alert-${type} alert-dismissible fade show position-fixed`;
+    toast.style.cssText = 'top: 20px; right: 20px; z-index: 1000; min-width: 250px;';
+    toast.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" onclick="this.parentElement.remove()"></button>
+    `;
+    
+    // Add to page
+    document.body.appendChild(toast);
+    
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+        if (toast.parentElement) {
+            toast.remove();
+        }
+    }, 3000);
+}
+
+// Initialize when page loads
+document.getElementById('encounterForm').addEventListener('submit', () => {
+    ['common','uncommon','rare','vrare'].forEach(rarity => updateHidden(rarity));
+});
+
+// Add event listener to prevent form resubmission on page refresh
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
+
+<style>
+.custom-toast {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+</style>
+{% endblock %}

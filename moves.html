@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Moves List{% endblock %}
+
+{% block content %}
+<h2>Moves Database</h2>
+
+{% if request.args.get('updated') %}
+<div class="alert alert-success mt-3">
+    Move updated successfully!
+</div>
+{% endif %}
+
+<div class="d-flex justify-content-between mb-4">
+    <form method="POST" class="d-flex flex-grow-1 me-3">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search move name..." value="{{ search }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+    
+    <div>
+        <a href="{{ url_for('insert_move') }}" class="btn btn-success">+ Insert New</a>
+    </div>
+</div>
+
+{% if results %}
+<div class="table-responsive">
+    <table class="table table-hover table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Move</th>
+                <th>AC</th>
+                <th>Damage (DB)</th>
+                <th>Effect</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for r in results %}
+            <tr>
+                <td>{{ r['name'] }}</td>
+                <td>{{ r['ac'] or '—' }}</td>
+                <td>{{ r['damage'] or '—' }}</td>
+                <td>{{ r['effect'] or '—' }}</td>
+                <td>
+                    <a href="{{ url_for('edit_move', name=r['name']) }}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="text-muted">No moves found. Try a different search.</p>
+{% endif %}
+{% endblock %}

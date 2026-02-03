@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1 class="text-center mb-5 text-light">Pokémon Tabletop Evolution GM Tool</h1>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <a href="/pokemon" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Pokémon Database</h5></div>
+                <div class="card-body">Search PTE stats, capabilities, skills + official abilities</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/moves" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Moves Database</h5></div>
+                <div class="card-body">AC, Damage Base, Effect</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/exp_calc" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>EXP Calculator</h5></div>
+                <div class="card-body">Gain + total with growth rates</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/level_up" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Level-Up Stat Rolls</h5></div>
+                <div class="card-body">Nature-modified rolls</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/severity" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Severity Rolls</h5></div>
+                <div class="card-body">1d10 encounter difficulty</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/encounters" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Encounter Tables</h5></div>
+                <div class="card-body">Create & roll custom tables</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/pokemon_generator" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Pokémon Generator</h5></div>
+                <div class="card-body">Generate custom Pokémon with stats</div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a href="/trainer_sheets" class="text-decoration-none">
+            <div class="card h-100 shadow">
+                <div class="card-header"><h5>Trainer Sheets</h5></div>
+                <div class="card-body">Create trainers, manage inventory & Pokémon</div>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}

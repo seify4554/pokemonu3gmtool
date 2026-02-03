@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Insert Move{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Insert New Move</h2>
+    
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Move Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">AC (Attack Check) - leave empty for none</label>
+            <input type="number" name="ac" class="form-control" placeholder="e.g., 2" min="0" max="20">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Damage</label>
+            <input type="text" name="damage" class="form-control" placeholder="e.g., 2d6+3 or Special">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Effect</label>
+            <textarea name="effect" class="form-control" rows="4" placeholder="Describe the move effect..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Insert Move</button>
+        <a href="{{ url_for('moves') }}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

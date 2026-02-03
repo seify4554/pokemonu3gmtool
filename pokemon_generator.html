@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Pokémon Generator{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Pokémon Generator</h2>
+    <p class="text-muted">Generate a Pokémon with custom level, nature, and gender. Shiny chance: 1/500 ✨</p>
+    
+    <form method="POST" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label class="form-label">Pokémon</label>
+                <select name="pokemon_name" class="form-select" required>
+                    <option value="">Select a Pokémon...</option>
+                    {% for name in pokemon_names %}
+                    <option value="{{ name }}" {% if result and result.name == name %}selected{% endif %}>
+                        {{ name }}
+                    </option>
+                    {% endfor %}
+                </select>
+                <a href="{{ url_for('generate_random_pokemon') }}" class="btn btn-sm btn-outline-info mt-2">
+                    Random Pokémon
+                </a>
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">Level</label>
+                <input type="number" name="level" class="form-control" value="{{ request.form.get('level', '5') }}" min="1" max="100" required>
+            </div>
+            
+            <div class="col-md-4">
+                <label class="form-label">Nature</label>
+                <select name="nature" class="form-select">
+                    <option value="random">Random</option>
+                    {% for nature in natures %}
+                    <option value="{{ nature }}" {% if request.form.get('nature') == nature %}selected{% endif %}>
+                        {{ nature }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="col-md-4">
+                <label class="form-label">Gender</label>
+                <select name="gender" class="form-select">
+                    <option value="random">Random</option>
+                    <option value="♂">Male (♂)</option>
+                    <option value="♀">Female (♀)</option>
+                    <option value="genderless">Genderless</option>
+                </select>
+            </div>
+            
+            <div class="col-md-4">
+                <label class="form-label">&nbsp;</label>
+                <button type="submit" class="btn btn-primary w-100">Generate Pokémon</button>
+            </div>
+        </div>
+    </form>
+    
+    {% if result %}
+    <div class="card bg-dark border-success">
+        <div class="card-header bg-success">
+            <h4 class="mb-0">{{ result.shiny_prefix }}{{ result.name }} Lv.{{ result.level }}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <p><strong>Nature:</strong> {{ result.nature }}</p>
+                    <p><strong>Gender:</strong> {{ result.gender }}</p>
+                    <p><strong>Shiny:</strong> {{ "Yes ✨" if result.shiny else "No" }}</p>
+                    <p><strong>Total HP:</strong> {{ result.hp_total }}</p>
+                </div>
+                <div class="col-md-8">
+                    <h5>Stats Breakdown:</h5>
+                    <table class="table table-sm table-dark">
+                        <thead>
+                            <tr>
+                                <th>Stat</th>
+                                <th>Base</th>
+                                <th>Level Bonus</th>
+                                <th>Nature Bonus</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for stat, base in result.base_stats.items() %}
+                            <tr>
+                                <td>{{ stat }}</td>
+                                <td>{{ base }}</td>
+                                <td>{{ result.level_stats.get(stat, 0) }}</td>
+                                <td>{{ result.nature_bonus.get(stat, 0) }}</td>
+                                <td><strong>{{ result.final_stats.get(stat, 0) }}</strong></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

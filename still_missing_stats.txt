@@ -1,0 +1,3 @@
+Pokémon still missing stats:
+==================================================
+Tadbulb

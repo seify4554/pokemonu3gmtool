@@ -1,0 +1,922 @@
+{
+  "Pokemon Tabletop Evolution": [
+    1,
+    66,
+    67,
+    68,
+    69,
+    70
+  ],
+  "Starter Pokemon": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "Evo - Poison Tail - Poison": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Level-Up Attack List": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evolution Path": [
+    30,
+    30,
+    4,
+    8,
+    12,
+    16
+  ],
+  "Species Starting Attacks": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Leaf Tornado - Grass": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Narrative - None": [
+    5,
+    11,
+    214,
+    7,
+    4,
+    8
+  ],
+  "Wood Hammer": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evolution Path (Split Evolution)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Base Stats": [
+    30,
+    30,
+    4,
+    8,
+    12,
+    16
+  ],
+  "Narrative - Pack Mon": [
+    2,
+    4,
+    30,
+    9,
+    15,
+    30
+  ],
+  "Wild Growth": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Skill Information": [
+    4,
+    2,
+    4,
+    4,
+    8,
+    12
+  ],
+  "Storm": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Double Kick - Fighting": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Blaze Kick - Fire": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Mach Punch - Fighting": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Superpower": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Body Press - Fighting": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Mastered - Athletics": [
+    2,
+    11,
+    6,
+    4,
+    8,
+    12
+  ],
+  "Narrative - Tracker": [
+    1,
+    8,
+    71,
+    7,
+    15,
+    30
+  ],
+  "Sunny Day": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Mastered - Acrobatics": [
+    2,
+    19,
+    8,
+    15,
+    30,
+    64
+  ],
+  "Evo Fire Fang - Fire": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Torch Song - Fire": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Mastered - Combat": [
+    2,
+    20,
+    9,
+    15,
+    30,
+    72
+  ],
+  "Narrative - Gilled": [
+    2,
+    4,
+    25,
+    4,
+    15,
+    30
+  ],
+  "Mastered - None": [
+    1,
+    4,
+    9,
+    3,
+    4,
+    8
+  ],
+  "Narrative - Alluring": [
+    1,
+    4,
+    4,
+    20,
+    30,
+    233
+  ],
+  "Mastered - Perception": [
+    1,
+    8,
+    1,
+    15,
+    30,
+    91
+  ],
+  "Evo Low Sweep - Fighting": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Aqua Step - Water": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Gust - Flying": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Day": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo - Protect  - Normal": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    25
+  ],
+  "Narrative - Mindlock": [
+    4,
+    8,
+    110,
+    2,
+    20,
+    40
+  ],
+  "Ripping Abyss": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Abyss": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Spirit Break - Fairy": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Thunder": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Dragon Dance - Dragon": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Tackle": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Psychic Terrain - Psychic": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Tri Attack - Normal": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Thunder Punch - Electric": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Thunder Fang - Electric": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Dragon Claw - Dragon": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Floral Healing - Fairy": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Wind Storm": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Iron Defense - Steel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Withdraw - Water": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Make it Rain - Steel": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Grass Knot - Grass": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Sweet Kiss - Fairy": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Inept - None": [
+    3,
+    3,
+    9,
+    4,
+    8,
+    12
+  ],
+  "Narrative - Breathless": [
+    1,
+    4,
+    35,
+    3,
+    4,
+    8
+  ],
+  "Tectonic Burst": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Dual Chop  - Dragon": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Night Slash - Dark": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Volt Tackle": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Shadow Punch - Ghost": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Windstorm": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Victory Dance - Fighting": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo - Syrup Bomb - Grass": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Shadow Bone - Ghost": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Thrash": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Mastered - Focus": [
+    8,
+    10,
+    3,
+    4,
+    8,
+    12
+  ],
+  "Room": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Trump Card - Normal": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Purify - Poison": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Cyclizar (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Tatsugiri (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Impact": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Bombirdier (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Flamigo (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Other Information": [
+    1,
+    7,
+    4,
+    8,
+    12,
+    16
+  ],
+  "Klawf (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Orthworm (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Typhoon": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Dondozo (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Veluza (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Confusion - Psychic": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Whiteout": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Inept - Athletics": [
+    3,
+    7,
+    43,
+    9,
+    25,
+    4
+  ],
+  "Steel Roller": [
+    25,
+    4,
+    8,
+    12,
+    16,
+    20
+  ],
+  "Evo Energy Bomb - Electric": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Payback - Dark": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Obstruct - Dark": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Burst": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Avalanche - Ice": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Wonder Room": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Psychic Storm": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Psycho Cut - Psychic": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Tauros (Combat Breed)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Tauros (Blaze Breed)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Tauros (Aqua Breed)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo - Matcha Gotcha - Grass": [
+    8,
+    12,
+    16,
+    20,
+    24,
+    28
+  ],
+  "Slither Wing (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Iron Jugulis (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Roaring Moon (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Sandy Shocks (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Iron Valiant (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Scream Tail (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Iron Hands (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Flutter Mane (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Brute Bonnet (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Great Tusk (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Iron Treads (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Iron Bundle (Base)": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Stone Edge": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Thunderstorm": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Wrathful Blitz": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Beam": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "Evo Air Cutter - Flying": [
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ]
+}

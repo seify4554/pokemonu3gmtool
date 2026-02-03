@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Saved Encounters{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Saved Encounters</h2>
+    
+    <a href="{{ url_for('encounters') }}" class="btn btn-primary mb-3">← Back to Encounters</a>
+    
+    {% if saved_encounters %}
+    <div class="row">
+        {% for encounter in saved_encounters %}
+        <div class="col-md-6 mb-3">
+            <div class="card bg-dark">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Saved: {{ encounter['saved_at'][:16] if encounter['saved_at'] else 'Unknown' }}</span>
+                    <a href="{{ url_for('delete_saved_encounter', encounter_id=encounter['id']) }}" 
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Delete this saved encounter?')">Delete</a>
+                </div>
+                <div class="card-body">
+                    {{ encounter['encounter_text']|safe }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <h5>No Saved Encounters</h5>
+        <p>You haven't saved any encounters yet. Roll some encounters and use the "Save" button.</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

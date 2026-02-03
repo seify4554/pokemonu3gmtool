@@ -1,0 +1,756 @@
+{
+  "Bombirdier": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Bombirdier ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Brute Bonnet": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Brute Bonnet ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Crobat": {
+    "stats": [
+      2,
+      19,
+      8,
+      15,
+      30,
+      64
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Crobat ": {
+    "stats": [
+      2,
+      19,
+      8,
+      15,
+      30,
+      64
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Cyclizar": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Cyclizar ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Dondozo": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Dondozo ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Flamigo": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Flamigo ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Flutter Mane": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Flutter Mane ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Great Tusk": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Great Tusk ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Iron Bundle": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Quark Drive"
+    ]
+  },
+  "Iron Bundle ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Iron Hands": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Quark Drive"
+    ]
+  },
+  "Iron Hands ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Iron Jugulis": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Quark Drive"
+    ]
+  },
+  "Iron Jugulis ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Iron Treads": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Quark Drive"
+    ]
+  },
+  "Iron Treads ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Iron Valiant": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Quark Drive"
+    ]
+  },
+  "Iron Valiant ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Klawf": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Klawf ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Lycanroc (Midday)": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Lycanroc (Midday) ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Orthworm": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Orthworm ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Revavroom": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Revavroom ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Roaring Moon": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Roaring Moon ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Sandy Shocks": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Sandy Shocks ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Scream Tail": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Scream Tail ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Shroomish": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Shroomish ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Slither Wing": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "Protosynthesis"
+    ]
+  },
+  "Slither Wing ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tatsugiri": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tatsugiri ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros (Aqua Breed)": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros (Aqua Breed) ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros (Blaze Breed)": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros (Blaze Breed) ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros (Combat Breed)": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Tauros (Combat Breed) ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Varoom": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Varoom ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Veluza": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  },
+  "Veluza ": {
+    "stats": [
+      4,
+      8,
+      12,
+      16,
+      20,
+      24
+    ],
+    "abilities": [
+      "See API"
+    ]
+  }
+}

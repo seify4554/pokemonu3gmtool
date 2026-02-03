@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}EXP Calculator{% endblock %}
+
+{% block content %}
+<h2>EXP Calculator</h2>
+
+<form method="POST">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">EXP Needed for Level Up</label>
+            <input type="number" name="exp_needed" class="form-control" required value="1000">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Base EXP of Defeated Pokémon</label>
+            <input type="number" name="base_exp" class="form-control" required value="64">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Level of Defeated Pokémon</label>
+            <input type="number" name="defeated_level" class="form-control" required value="5">
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Level of Pokémon Gaining EXP</label>
+            <input type="number" name="gaining_level" class="form-control" required value="5">
+        </div>
+        <div class="col-12">
+            <label class="form-label">Growth Rate</label>
+            <select name="growth_rate" class="form-select" required>
+                <option value="medium fast">Medium Fast</option>
+                <option value="erratic">Erratic</option>
+                <option value="fast">Fast</option>
+                <option value="medium slow">Medium Slow</option>
+                <option value="slow">Slow</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Has Stored EXP?</label>
+            <select name="stored" class="form-select">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Stored EXP (if yes)</label>
+            <input type="number" name="stored_exp" class="form-control" value="0">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Calculate</button>
+</form>
+
+{% if result %}
+<div class="alert alert-info mt-4">
+    {{ result | safe }}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Pokémon{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Edit Pokémon: {{ pokemon['name'] }}</h2>
+    
+    <form method="POST">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">HP</label>
+                <input type="number" name="hp" class="form-control" value="{{ pokemon['HP'] }}" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Attack</label>
+                <input type="number" name="atk" class="form-control" value="{{ pokemon['Atk'] }}" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Defense</label>
+                <input type="number" name="defense" class="form-control" value="{{ pokemon['Def'] }}" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Sp. Attack</label>
+                <input type="number" name="spa" class="form-control" value="{{ pokemon['SpA'] }}" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Sp. Defense</label>
+                <input type="number" name="spd" class="form-control" value="{{ pokemon['SpD'] }}" min="0" max="255">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Speed</label>
+                <input type="number" name="spe" class="form-control" value="{{ pokemon['Spe'] }}" min="0" max="255">
+            </div>
+            
+            <div class="col-md-6">
+                <label class="form-label">Capabilities</label>
+                <textarea name="capabilities" class="form-control" rows="3">{{ pokemon['capabilities'] or '' }}</textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Skills</label>
+                <textarea name="skills" class="form-control" rows="3">{{ pokemon['skills'] or '' }}</textarea>
+            </div>
+            
+            <div class="col-12">
+                <label class="form-label">Abilities (comma-separated)</label>
+                <input type="text" name="abilities" class="form-control" 
+                       value="{{ pokemon['abilities'].replace('"', '').replace('[', '').replace(']', '') if pokemon['abilities'] else '' }}">
+            </div>
+            
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                <a href="{{ url_for('pokemon') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
